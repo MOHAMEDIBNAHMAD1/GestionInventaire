@@ -1,7 +1,13 @@
 <?php
 session_start();
-// if (!isset($_SESSION["cin"]) || empty($_SESSION["cin"]) || strlen(trim($_SESSION["cin"])) === 0) header("Location: login.php?error=cin");
+if (!isset($_SESSION["cin"]) || empty($_SESSION["cin"]) || strlen(trim($_SESSION["cin"])) === 0) header("Location: login.php?error=cin");
+
 include './credentials.php';
+$cin = $_SESSION["cin"];
+
+$res = mysqli_query($conn, "SELECT nom FROM magasinier WHERE cin like '$cin';");
+$emp = mysqli_fetch_assoc($res);
+
 $products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, description, img FROM produit, categorie WHERE categorie.id = produit.idCat;");
 $rescheck = mysqli_num_rows($products);
 ?>
@@ -23,13 +29,13 @@ $rescheck = mysqli_num_rows($products);
         <aside>
             <div class="infos">
                 <img src="./imgs/user-img.png" alt="user img" />
-                <p><?php ?></p>
+                <p><?= $emp['nom']; ?></p>
             </div>
             <div class="menu">
                 <a href="#"><i class="fas fa-home"></i>Accueil</a>
                 <a href="#"><i class="fas fa-plus-circle"></i>Ajouter produit</a>
                 <a href="#"><i class="fas fa-file-invoice-dollar"></i>Effecuter achat</a>
-                <a href="#"><i class="fas fa-sign-out-alt"></i>Se déconnecter</a>
+                <a href="./process.php?decon"><i class="fas fa-sign-out-alt"></i>Se déconnecter</a>
             </div>
         </aside>
         <main>
@@ -62,7 +68,7 @@ $rescheck = mysqli_num_rows($products);
                     if ($rescheck > 0) :
                         while ($row = mysqli_fetch_assoc($products)) : ?>
                             <tr>
-                                <td><?= $row["id"]; ?></td>
+                                <td>#<?= $row["id"]; ?></td>
                                 <td><?= $row["intitule"]; ?></td>
                                 <td><?= $row["prix"]; ?></td>
                                 <td><?= $row["intCa"]; ?></td>
@@ -83,30 +89,6 @@ $rescheck = mysqli_num_rows($products);
                             </tr>
                     <?php endwhile;
                     endif; ?>
-                    <!-- <tr>
-                        <td>#001</td>
-                        <td>intitule</td>
-                        <td>prix</td>
-                        <td>categorie</td>
-                        <td>quantite</td>
-                        <td class="edit">
-                            <form action="modifier.php?id=1">
-                                <button type="submit">
-                                    <i class="fas fa-lg fa-edit"></i>
-                                </button>
-                            </form>
-                            <form action="./supprimer.php?id=1">
-                                <button type="submit">
-                                    <i class="fas fa-lg fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                        <td>
-                            <button class="voir">
-                                <p>Voir</p><i class="far fa-eye"></i>
-                            </button>
-                        </td>
-                    </tr> -->
                 </table>
             </section>
             <footer>footer</footer>

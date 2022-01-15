@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,43 +5,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/login.css">
     <title>Login</title>
 </head>
 
 <body class="login">
     <div class="login-box">
         <img src="./imgs/Logo.png" alt="img">
-        <form action="login.php" method="post">
+        <form action="./process.php" method="post">
             <div class="inputs">
-                <?php if (isset($_GET["error"])) echo "cin required!!!</br>"; ?>
-                <input type="text" name="cin" id="cin" placeholder="CIN">
-                <input type="password" name="pass" id="pass" placeholder="Password">
+                <?php if (isset($_GET["error"])) {
+                    if ($_GET["error"] === 'notset')
+                        echo "Please fill all fields!!!</br>";
+                    else if ($_GET["error"] === 'cin')
+                        echo "Cin incorrect!!!</br>";
+                    else if ($_GET["error"] === 'pass')
+                        echo "Password incorrect!!!</br>";
+                } ?>
+                <div class="aftercin">
+                    <input type="text" name="cin" id="cin" required autocomplete="off">
+                    <label>Cin</label>
+                </div>
+                <div class="afterpass">
+                    <input type="password" name="pass" id="pass" required>
+                    <label>Password</label>
+                </div>
             </div>
             <div class="emptyp">
-                <input type="radio" name="typeemp" id="maga" value="magasinier"> <label for="maga">magasinier</label>
-                <input type="radio" name="typeemp" id="admin" value="admin"> <label for="admin">Admin</label>
+                <input type="radio" name="role" id="maga" value="magasinier" checked> <label for="maga">Magasinier</label>
+                <input type="radio" name="role" id="admin" value="admin"> <label for="admin">Admin</label>
             </div>
-            <input type="submit" value="submit">
+            <input type="submit" value="Connexion">
+            <p class="oblie">Mot de passe oublié?</p>
         </form>
     </div>
     <img src="./imgs/imag-loign.png" alt="img">
-    <?php
-    if (isset($_POST["cin"])) {
-        $cin = $_POST["cin"];
-        $results = mysqli_query(mysqli_connect("localhost", "root", "", "gestioninventaire"), "SELECT * FROM magasinier WHERE cin like '$cin';");
-        $resCheck = mysqli_num_rows($results);
-        if ($resCheck > 0) {
-            $row = mysqli_fetch_assoc($results);
-            if ($_POST["pass"] === $row["PASSWORD"]) {
-                echo $row["pass"];
-                $_SESSION["cin"] = $_POST["cin"];
-                header("Location:index.php");
-            }
-        }
-    }
-
-    ?>
 </body>
 
 </html>

@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.login-box {
+  border-radius: 10px;
+  box-shadow: 6px 8px 125px 3px #ebf2fa;
+  background-color: #fff;
+  height: 700px;
+  width: 750px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  /* padding: 3rem; */
+}
+.login-box form {
+  /* padding-top: 20px; */
+  height: 430px;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 160px;
+}
+
+.inputs {
+  height: 183px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  /* margin: 0 100px; */
+}
+
+.inputs input {
+  border: none;
+  border-bottom: 2px #5c7aea solid;
+  outline: none;
+  padding-block: 10px;
+  width: 100%;
+}
+
+.login-box form * {
+  font-size: 1.2rem;
+}
+#admin {
+  margin-left: 20px;
+}
+.oblie {
+  color: #bbb;
+}
+.login-box input[type="submit"] {
+  border: none;
+  width: max-content;
+  font-size: 1.5rem;
+  padding: 10px 50px;
+  background-color: #5c7aea;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+
+.login-box input[type="submit"]:hover {
+  box-shadow: 0 0 10px 2px rgb(204, 204, 204);
+  transform: scale(1.05);
+}
+
+.login-box .aftercin,
+.login-box .afterpass {
+  position: relative;
+}
+
+.login-box .aftercin label,
+.login-box .afterpass label {
+  position: absolute;
+  color: #bbb;
+  top: 10px;
+  left: 0;
+  z-index: 999;
+  transition: all 200ms ease;
+}
+
+.login-box #pass:focus ~ label,
+.login-box #cin:focus ~ label {
+  transform: translateY(-30px);
+  color: #5c7aea;
+}
