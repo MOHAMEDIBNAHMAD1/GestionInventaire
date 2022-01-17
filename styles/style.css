@@ -188,6 +188,39 @@ main .voir {
 }
 /*? products end*/
 
+/*? add form start*/
+.form {
+  outline: 1px solid red;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+  flex-wrap: wrap;
+  padding: var(--padding);
+  background-color: var(--accent-color);
+}
+.form .data-input {
+  display: flex;
+  flex-direction: column;
+  min-width: 45%;
+}
+.form .data-input input,
+.form textarea {
+  padding: 10px var(--padding);
+  border-radius: 5px;
+  border: 1px black solid;
+  border-bottom: 4px solid var(--main-color);
+}
+.form label {
+  color: var(--main-color);
+  font-weight: 700;
+}
+/* .form input[type=submit]{
+
+} */
+/*? add form end*/
+
 footer {
   margin-top: auto;
   background-color: var(--accent-color);
