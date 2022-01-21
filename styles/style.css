@@ -190,7 +190,7 @@ main .voir {
 
 /*? add form start*/
 .form {
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
   width: 100%;
   height: 100%;
   display: flex;
@@ -203,7 +203,7 @@ main .voir {
 .form .data-input {
   display: flex;
   flex-direction: column;
-  min-width: 45%;
+  width: 45%;
 }
 .form .data-input input,
 .form textarea {
@@ -216,9 +216,27 @@ main .voir {
   color: var(--main-color);
   font-weight: 700;
 }
-/* .form input[type=submit]{
-
-} */
+.form .btns {
+  flex-direction: row;
+  gap: var(--padding);
+  justify-content: flex-end;
+}
+.form .btns button,
+.form .btns a {
+  padding: 10px 50px;
+  height: max-content;
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+}
+.form .btns .sub {
+  background-color: var(--main-color);
+}
+.form .btns .an {
+  text-decoration: none;
+  color: var(--white);
+  background-color: #0b054f;
+}
 /*? add form end*/
 
 footer {
