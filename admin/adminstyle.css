@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+:root {
+  --main-color: #5c7aea;
+  --accent-color: #ebf2fa;
+  --white: #fff;
+  --padding: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  /* background-color: khaki; */
+}
+
+/* ? aside start*/
+aside {
+  height: 100vh;
+  width: 15vw;
+  background-color: var(--main-color);
+  position: sticky;
+  top: 0;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  gap: 130px;
+  padding-top: 77px;
+}
+aside .infos {
+  text-align: center;
+}
+
+aside img {
+  width: 100%;
+}
+
+aside .infos p {
+  position: relative;
+  margin: auto;
+  margin-top: 10px;
+}
+aside .infos p::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  background-color: var(--white);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+}
+
+aside .menu {
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 20px;
+}
+
+aside .menu a {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 250ms ease;
+  /* width: max-content; */
+  padding: 10px;
+}
+aside .menu a:hover {
+  transform: scale(1.05);
+  /* box-shadow: 0 0 5px 5px black; */
+}
+aside i {
+  margin-right: 10px;
+}
+/* ? aside end*/
+
+/* ? main start*/
+main {
+  display: flex;
+  /* background-color: lightblue; */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* height: 200vh; */
+}
+
+main header {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--padding);
+  align-items: center;
+  /* outline: 1px solid red; */
+}
+main .fa-search {
+  color: var(--main-color);
+}
+main input[type="text"] {
+  outline: none;
+  border: none;
+  border-bottom: 4px solid var(--main-color);
+  padding: 5px 10px;
+}
+
+main input[type="text"]::placeholder {
+  color: var(--main-color);
+}
+main input[type="text"] {
+  color: var(--main-color);
+  font-weight: 600;
+}
+main .stats {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-inline: var(--padding);
+  gap: 30px;
+}
+main .stats div {
+  background-color: var(--accent-color);
+  height: 140px;
+  flex-basis: 100%;
+  box-shadow: -2px 2px 4px var(--main-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding);
+}
+main .stats i {
+  color: var(--main-color);
+}
+/* ? main end*/
+
+/*? products start*/
+main .products {
+  padding: var(--padding);
+}
+main .products-list {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  width: 100%;
+}
+main .products-list tr {
+  background-color: var(--accent-color);
+  margin-bottom: 10px;
+}
+main .products-list td {
+  text-align: center;
+  padding: var(--padding) 5px;
+  color: var(--main-color);
+  font-weight: 600;
+}
+main .products-list tr td:last-child {
+  padding: 0;
+}
+main .voir {
+  border: none;
+  background-color: var(--main-color);
+  color: var(--accent-color);
+  width: 100%;
+  padding: var(--padding);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+.products-list .edit {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.products-list .fa-trash {
+  color: red;
+}
+.products-list .edit a {
+  text-decoration: none;
+  color: var(--main-color);
+}
+/*? products end*/
+
+/*? add form start*/
+.form {
+  /* outline: 1px solid red; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+  flex-wrap: wrap;
+  padding: var(--padding);
+  background-color: var(--accent-color);
+}
+.form .data-input {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+.form .data-input input,
+.form textarea {
+  padding: 10px var(--padding);
+  border-radius: 5px;
+  border: 1px black solid;
+  border-bottom: 4px solid var(--main-color);
+}
+.form label {
+  color: var(--main-color);
+  font-weight: 700;
+}
+.form .btns {
+  flex-direction: row;
+  gap: var(--padding);
+  justify-content: flex-end;
+}
+.form .btns button,
+.form .btns a {
+  padding: 10px 50px;
+  height: max-content;
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+}
+.form .btns .sub {
+  background-color: var(--main-color);
+}
+.form .btns .an {
+  text-decoration: none;
+  color: var(--white);
+  background-color: #0b054f;
+}
+/*? add form end*/
+
+footer {
+  margin-top: auto;
+  background-color: var(--accent-color);
+  padding: var(--padding);
+}
