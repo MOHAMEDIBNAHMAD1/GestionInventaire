@@ -10,6 +10,8 @@ $emp = mysqli_fetch_assoc($res);
 
 $products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, produit.description, img FROM produit, categorie WHERE categorie.id = produit.idCat;");
 $rescheck = mysqli_num_rows($products);
+$prs=$products = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +28,30 @@ $rescheck = mysqli_num_rows($products);
 
 <body>
     <div class="container">
+     <div id="modal">
+            <form class="achat" action="">
+                <div class="data-input">
+                    <label for="">Produit</label>
+                    <select name="products" id="" required>
+                    <option value="" disabled selected>--Choisir un prouduit--</option>
+                    <?php if ($rescheck > 0) :
+                            while ($pr = mysqli_fetch_assoc($prs)) : ?>
+                                <option value="<?= $pr['id'] ?>"><?= $pr['intitule'] ?></option>
+                        <?php endwhile;
+                        endif; ?>
+                    </select>
+                </div>
+                <div class="data-input">
+                    <label for="">Quantite</label>
+                    <input type="number">
+                </div>
+                <div class="data-input bbtns">
+                    <input class="ann"type="button" value="Annuler">
+                    <input  class="conf" type="submit" value="Confirmer">
+                </div>
+            </form>
+        </div>
+                   
         <?php include './aside.php'; ?>
         <main>
             <header>

@@ -63,7 +63,7 @@ $rescheck = mysqli_num_rows($magsiniers);
                                 <td><?= $row["PASSWORD"]; ?></td>
                                 <td class="edit">
                                     <a href="./modifiermag.php?id=<?= $row["id"]; ?>">
-                                        <i class="fas fa-lg fa-edit"></i>
+                                    <i class="fas fa-lg fa-user-edit"></i>
                                     </a>
                                     <a href="./supprimerMag.php?id=<?= $row["id"]; ?>">
                                         <i class="fas fa-lg fa-trash"></i>
