@@ -44,7 +44,7 @@ $check = mysqli_num_rows($res);
                     </select>
                 </div>
 
-                <div class="data-input"> <label>Prix</label><input type="text" name="prix" id=""></div>
+                <div class="data-input"> <label>Prix</label><input type="number" name="prix" id=""></div>
                 <div class="data-input"> <label>Quantite</label><input type="number" name="qtt" id=""></div>
                 <div class="data-input"> <label>Image</label><input type="file" name="img" id="" accept=".png,.jpg,.jpeg"></div>
                 <div class="data-input"> <label>Description</label><textarea name="desc" id="" cols="30" rows="10"></textarea></div>

@@ -20,8 +20,14 @@ if (isset($_GET["decon"])) {
 
             $pass = $_POST["pass"];
             if ($pass === $row["PASSWORD"]) {
-                $_SESSION["cin"] = $cin;
-                if ($role === "magasinier") header("Location: ./index.php");
+                if ($role === "magasinier") {
+                    $_SESSION["cin"] = $cin;
+                    header("Location: ./index.php");
+                }
+                else{
+                    $_SESSION["admin"] = $cin;
+                    header("Location: ./admin.php");
+                }
             } else {
                 header("Location: ./login.php?error=pass");
             }

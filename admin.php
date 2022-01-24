@@ -1,15 +1,15 @@
 <?php
 session_start();
-if (!isset($_SESSION["cin"]) || empty($_SESSION["cin"]) || strlen(trim($_SESSION["cin"])) === 0) header("Location: login.php?error=cin");
+if (!isset($_SESSION["admin"]) || empty($_SESSION["admin"]) || strlen(trim($_SESSION["admin"])) === 0) header("Location: login.php?error=cin");
 
 include './credentials.php';
-$cin = $_SESSION["cin"];
+$cin = $_SESSION["admin"];
 
-$res = mysqli_query($conn, "SELECT nom FROM magasinier WHERE cin like '$cin';");
+$res = mysqli_query($conn, "SELECT nom FROM admin WHERE cin like '$cin';");
 $emp = mysqli_fetch_assoc($res);
 
-$products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, produit.description, img FROM produit, categorie WHERE categorie.id = produit.idCat;");
-$rescheck = mysqli_num_rows($products);
+$magsiniers = mysqli_query($conn, "SELECT * FROM `magasinier`");
+$rescheck = mysqli_num_rows($magsiniers);
 ?>
 
 <!DOCTYPE html>
@@ -20,17 +20,17 @@ $rescheck = mysqli_num_rows($products);
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/styleadmin.css" />
     <title>Home</title>
 </head>
 
 <body>
     <div class="container">
-        <?php include './aside.php'; ?>
+        <?php include './asideadmin.php'; ?>
         <main>
             <header>
                 <div>
-                    <input type="text" name="rechercher id=" recherche" placeholder="Rechercher..." />
+                    <input type="text" name="rechercher" id=" recherche" placeholder="Rechercher..." />
                     <i class="fas fa-search"></i>
                 </div>
                 <img src="./imgs/Logo.png" alt="img" />
@@ -46,41 +46,40 @@ $rescheck = mysqli_num_rows($products);
                 <table class="products-list" cellspacing="0">
                     <tr>
                         <td>Id</td>
-                        <td>Intitule</td>
-                        <td>Prix</td>
-                        <td>Categorie</td>
-                        <td>Quantite</td>
+                        <td>Nom</td>
+                        <td>CIN</td>
+                        <td>password</td>
+                        <!-- <td>Quantite</td> -->
                         <td>Edit</td>
                         <td></td>
                     </tr>
                     <?php
                     if ($rescheck > 0) :
-                        while ($row = mysqli_fetch_assoc($products)) : ?>
+                        while ($row = mysqli_fetch_assoc($magsiniers)) : ?>
                             <tr>
                                 <td>#<?= $row["id"]; ?></td>
-                                <td><?= $row["intitule"]; ?></td>
-                                <td><?= $row["prix"]; ?></td>
-                                <td><?= $row["intCa"]; ?></td>
-                                <td><?= $row["qtt"]; ?></td>
+                                <td><?= $row["nom"]; ?></td>
+                                <td><?= $row["CIN"]; ?></td>
+                                <td><?= $row["PASSWORD"]; ?></td>
                                 <td class="edit">
-                                    <a href="./modifier.php?id=<?= $row["id"]; ?>">
+                                    <a href="./modifiermag.php?id=<?= $row["id"]; ?>">
                                         <i class="fas fa-lg fa-edit"></i>
                                     </a>
-                                    <a href="./supprimer.php?id=<?= $row["id"]; ?>">
+                                    <a href="./supprimerMag.php?id=<?= $row["id"]; ?>">
                                         <i class="fas fa-lg fa-trash"></i>
                                     </a>
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <button class="voir">
                                         <p>Voir</p><i class="far fa-eye"></i>
                                     </button>
-                                </td>
+                                </td> -->
                             </tr>
                     <?php endwhile;
                     endif; ?>
                 </table>
             </section>
-            <footer>footer</footer>
+            <footer>Copyright 2022 all rights reserved </footer>
         </main>
     </div>
 </body>
