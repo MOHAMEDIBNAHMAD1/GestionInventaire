@@ -41,6 +41,7 @@ $prs = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./styles/style.css" />
     <script src="./js/main.js" defer></script>
+    <script src="./js/voir.js" defer></script>
     <title>Home</title>
 </head>
 
@@ -120,6 +121,13 @@ $prs = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
                                     </button>
                                 </td>
                             </tr>
+                            <div class="voir-prod">
+                                <i class="fas fa-2x fa-times"></i>
+                                <div class="voir-content">
+                                    <img src="./imgs/products/<?= $row['img'] ?>" alt="img">
+                                    <p><?= $row['description'] ?></p>
+                                </div>
+                            </div>
                     <?php endwhile;
                     endif; ?>
                 </table>

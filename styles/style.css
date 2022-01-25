@@ -81,7 +81,7 @@ aside i {
   margin-right: 10px;
 }
 /* ? aside end*/
-/* ? modal startL */
+/* ? modal start*/
 #modal {
   position: absolute;
   z-index: -1;
@@ -124,7 +124,46 @@ aside i {
   cursor: pointer;
   border-radius: 10px;
 }
-/* ? modal end */
+/* ? modal end*/
+
+/* ? voir buttons start*/
+.voir-prod {
+  position: absolute;
+  /* z-index: -1; */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  opacity: 0;
+}
+.voir-content {
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  box-shadow: 0px 0px 100px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  width: 40%;
+  height: 50%;
+  background-color: var(--white);
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.voir-content img {
+  width: 40%;
+}
+.fa-times {
+  position: absolute;
+  top: calc(25% + 10px);
+  right: calc(30% + 10px);
+  cursor: pointer;
+  padding: 10px;
+  color: var(--main-color);
+}
+/* ? voir buttons end*/
 
 /* ? main start*/
 main {
