@@ -81,16 +81,17 @@ aside i {
   margin-right: 10px;
 }
 /* ? aside end*/
- /* ? modal startL */
+/* ? modal startL */
 #modal {
   position: absolute;
-  z-index: 999;
+  z-index: -1;
   height: 100vh;
   width: 100vw;
   background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
 }
 .achat {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -102,26 +103,28 @@ aside i {
   justify-content: space-evenly;
   align-items: center;
 }
-.bbtns{
+.bbtns {
   display: flex;
   gap: 30px;
 }
-.bbtns .ann{
+.bbtns .ann {
   color: var(--white);
   padding: 10px 50px;
   background: rgba(11, 5, 79, 1);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  cursor: pointer;
 }
-.bbtns .conf{
+.bbtns .conf {
   /* background-color: #5c7aea; */
   color: var(--white);
   padding: 10px 50px;
-  background: #5C7AEA;
+  background: #5c7aea;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
   border-radius: 10px;
 }
- /* ? modal end */
+/* ? modal end */
 
 /* ? main start*/
 main {
@@ -277,6 +280,7 @@ main .voir {
   text-decoration: none;
   color: var(--white);
   background-color: #0b054f;
+  text-align: center;
 }
 /*? add form end*/
 

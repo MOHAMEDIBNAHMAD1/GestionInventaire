@@ -5,12 +5,29 @@ if (!isset($_SESSION["cin"]) || empty($_SESSION["cin"]) || strlen(trim($_SESSION
 include './credentials.php';
 $cin = $_SESSION["cin"];
 
+if (isset($_POST['achat'])) {
+
+    $id = $_POST['prod'];
+    $qtt = $_POST['quant'];
+
+    $query = "SELECT intitule ,qtt FROM produit WHERE id = $id;";
+
+    $res = mysqli_query($conn, $query);
+    $produit = mysqli_fetch_assoc($res);
+
+    if ($qtt > $produit['qtt']) {
+        echo "<script>alert('Quantie disponible " . $produit['qtt'] . "')</script>";
+    } else {
+        mysqli_query($conn, "UPDATE produit SET qtt = qtt - $qtt WHERE id = $id");
+    }
+}
+
 $res = mysqli_query($conn, "SELECT nom FROM magasinier WHERE cin like '$cin';");
 $emp = mysqli_fetch_assoc($res);
 
 $products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, produit.description, img FROM produit, categorie WHERE categorie.id = produit.idCat;");
 $rescheck = mysqli_num_rows($products);
-$prs=$products = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
+$prs = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
 
 ?>
 
@@ -23,18 +40,19 @@ $prs=$products = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./js/main.js" defer></script>
     <title>Home</title>
 </head>
 
 <body>
     <div class="container">
-     <div id="modal">
-            <form class="achat" action="">
+        <div id="modal">
+            <form class="achat" action="./index.php" method="POST">
                 <div class="data-input">
                     <label for="">Produit</label>
-                    <select name="products" id="" required>
-                    <option value="" disabled selected>--Choisir un prouduit--</option>
-                    <?php if ($rescheck > 0) :
+                    <select name="prod" id="" required>
+                        <option value="" disabled selected>--Choisir un prouduit--</option>
+                        <?php if ($rescheck > 0) :
                             while ($pr = mysqli_fetch_assoc($prs)) : ?>
                                 <option value="<?= $pr['id'] ?>"><?= $pr['intitule'] ?></option>
                         <?php endwhile;
@@ -43,15 +61,15 @@ $prs=$products = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
                 </div>
                 <div class="data-input">
                     <label for="">Quantite</label>
-                    <input type="number">
+                    <input type="number" name="quant" required>
                 </div>
                 <div class="data-input bbtns">
-                    <input class="ann"type="button" value="Annuler">
-                    <input  class="conf" type="submit" value="Confirmer">
+                    <input class="ann" type="button" value="Annuler">
+                    <input class="conf" type="submit" name="achat" value="Confirmer">
                 </div>
             </form>
         </div>
-                   
+
         <?php include './aside.php'; ?>
         <main>
             <header>
