@@ -35,7 +35,7 @@ $product = mysqli_fetch_assoc($pr);
         <?php include './aside.php'; ?>
         <main>
             <h1 style="text-align: center;">Modifier produit</h1>
-            <form class="form" action="./operations.php" method="POST">
+            <form class="form" action="./operations.php" method="POST" enctype="multipart/form-data">
                 <div class="data-input"> <label>Intitule</label><input value="<?= $product["intitule"] ?>" type="text" name="intitule" id=""></div>
 
                 <div class="data-input">
@@ -52,7 +52,7 @@ $product = mysqli_fetch_assoc($pr);
 
                 <div class="data-input"> <label>Prix</label><input value="<?= $product["prix"] ?>" type="number" step="0.01" name="prix" id=""></div>
                 <div class="data-input"> <label>Quantite</label><input type="number" name="qtt" value="<?= $product["qtt"] ?>" id=""></div>
-                <div class="data-input"> <label>Image</label><input type="file" name="img" value="<?= $product["img"] ?>" id="" accept=".png,.jpg,.jpeg"></div>
+                <div class="data-input"> <label>Image</label><input type="file" name="img" value="<?= $product["img"] ?>" id="" accept="image/*"></div>
                 <div class="data-input"> <label>Description</label><textarea name="desc" id="" cols="30" rows="10"><?= $product["description"] ?></textarea></div>
                 <div class="data-input btns"> <a class="an" href="./index.php">Annuler</a><button class="sub" type="submit">Modifier</button></div>
                 <div class="data-input btns"> <input type="text" name="op" id="" value="mod" hidden></div>

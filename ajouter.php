@@ -29,7 +29,7 @@ $check = mysqli_num_rows($res);
         <?php include './aside.php'; ?>
         <main>
             <h1 style="text-align: center;">Ajouter produit</h1>
-            <form class="form" action="./operations.php" method="POST">
+            <form class="form" action="./operations.php" method="POST" enctype="multipart/form-data">
                 <div class="data-input"> <label>Intitule</label><input type="text" name="intitule" id=""></div>
 
                 <div class="data-input">
@@ -46,7 +46,7 @@ $check = mysqli_num_rows($res);
 
                 <div class="data-input"> <label>Prix</label><input type="number" name="prix" id=""></div>
                 <div class="data-input"> <label>Quantite</label><input type="number" name="qtt" id=""></div>
-                <div class="data-input"> <label>Image</label><input type="file" name="img" id="" accept=".png,.jpg,.jpeg"></div>
+                <div class="data-input"> <label>Image</label><input type="file" name="img" id="" accept="image/*"></div>
                 <div class="data-input"> <label>Description</label><textarea name="desc" id="" cols="30" rows="10"></textarea></div>
                 <div class="data-input btns"> <a class="an" href="./index.php">Annuler</a><button class="sub" type="submit">Ajouter</button></div>
                 <div class="data-input btns"> <input type="text" name="op" id="" value="ajt" hidden></div>
