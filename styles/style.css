@@ -84,6 +84,12 @@ aside .menu a:hover {
 aside i {
   margin-right: 10px;
 }
+.fa-bars {
+  display: none;
+  z-index: -1;
+  position: absolute;
+  color: var(--white);
+}
 /* ? aside end*/
 /* ? modal start*/
 #modal {
@@ -349,5 +355,29 @@ footer {
   }
   aside .menu i {
     font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 1000px) {
+  main {
+    margin-left: 5vw;
+  }
+  aside {
+    position: absolute;
+    width: 70px;
+  }
+  .aside-mobile {
+    width: 5vw;
+  }
+  .mobile {
+    opacity: 0;
+  }
+  .fa-bars {
+    opacity: 1;
+    position: absolute;
+    margin: auto;
+    top: 40px;
+    display: block;
+    z-index: 9999;
+    color: var(--white);
   }
 }
