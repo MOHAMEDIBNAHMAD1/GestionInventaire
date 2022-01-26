@@ -51,14 +51,14 @@ $rescheck = mysqli_num_rows($magsiniers);
                         <td>password</td>
                         <!-- <td>Quantite</td> -->
                         <td>Edit</td>
-                        <td></td>
+                        
                     </tr>
                     <?php
                     if ($rescheck > 0) :
                         while ($row = mysqli_fetch_assoc($magsiniers)) : ?>
                             <tr>
                                 <td>#<?= $row["id"]; ?></td>
-                                <td><?= $row["nom"]; ?></td>''
+                                <td><?= $row["nom"]; ?></td>
                                 <td><?= $row["CIN"]; ?></td>
                                 <td><?= $row["PASSWORD"]; ?></td>
                                 <td class="edit">

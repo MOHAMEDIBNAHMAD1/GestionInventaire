@@ -57,7 +57,6 @@ $rescheck = mysqli_num_rows($magsiniers);
                         <td>desccription</td>
                         <!-- <td>Quantite</td> -->
                         <td>Edit</td>
-                        <td></td>
                     </tr>
                     <?php
                     if ($rescheck > 0) :
