@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $cin = $_POST['CINm'];
         $nom = $_POST['nommag'];
         $pwd = $_POST['pwd'];
-        mysqli_query($conn, " INSERT INTO `magasinier`(`nom`, `CIN`, `PASSWORD`) VALUES ('$cin','$nom','$pwd');") or die(mysqli_error($conn));
+        mysqli_query($conn, " INSERT INTO `magasinier`(`nom`, `CIN`, `PASSWORD`) VALUES ('$nom','$cin','$pwd');") or die(mysqli_error($conn));
         header("Location: ./admin.php");
     }
     if ($_POST['op'] == 'modc') {
