@@ -58,7 +58,7 @@ $rescheck = mysqli_num_rows($magsiniers);
                         while ($row = mysqli_fetch_assoc($magsiniers)) : ?>
                             <tr>
                                 <td>#<?= $row["id"]; ?></td>
-                                <td><?= $row["nom"]; ?></td>
+                                <td><?= $row["nom"]; ?></td>''
                                 <td><?= $row["CIN"]; ?></td>
                                 <td><?= $row["PASSWORD"]; ?></td>
                                 <td class="edit">
