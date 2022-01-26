@@ -39,7 +39,10 @@
             <p class="oblie">Mot de passe oublié?</p>
         </form>
     </div>
-    <img src="./imgs/imag-loign.png" alt="img">
+    <div class="imgd">
+        <img src="./imgs/imag-loign.png" alt="img">
+    </div>
+    
 </body>
 
 </html>

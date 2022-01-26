@@ -3,12 +3,17 @@ session_start();
 if (!isset($_SESSION["cin"]) || empty($_SESSION["cin"]) || strlen(trim($_SESSION["cin"])) === 0) header("Location: login.php?error=cin");
 
 include './credentials.php';
-$cin = $_SESSION["cin"];
 
+
+$cin = $_SESSION["cin"];
+$res = mysqli_query($conn, "SELECT id, nom FROM magasinier WHERE cin like '$cin';");
+$emp = mysqli_fetch_assoc($res);
+$idmag=$emp['id'];
 if (isset($_POST['achat'])) {
 
     $id = $_POST['prod'];
     $qtt = $_POST['quant'];
+    
 
     $query = "SELECT intitule ,qtt FROM produit WHERE id = $id;";
 
@@ -18,12 +23,13 @@ if (isset($_POST['achat'])) {
     if ($qtt > $produit['qtt']) {
         echo "<script>alert('Quantie disponible " . $produit['qtt'] . "')</script>";
     } else {
+       
         mysqli_query($conn, "UPDATE produit SET qtt = qtt - $qtt WHERE id = $id");
+        mysqli_query($conn,"INSERT INTO `achat`(`idPr`, `idmag`, `qtt`) VALUES ($id, $idmag,$qtt)");
     }
 }
 
-$res = mysqli_query($conn, "SELECT nom FROM magasinier WHERE cin like '$cin';");
-$emp = mysqli_fetch_assoc($res);
+
 
 $products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, produit.description, img FROM produit, categorie WHERE categorie.id = produit.idCat;");
 $rescheck = mysqli_num_rows($products);

@@ -100,3 +100,29 @@
   transform: translateY(-30px);
   color: #5c7aea;
 }
+
+@media only screen and (max-width: 1024px){
+  .imgd{
+    height: 70%;
+  }
+}
+@media only screen and (max-width: 1024px){
+.login-box img{
+  height: 70px;
+}
+.imgd{
+  height: 70%;
+  display: none;
+}
+.login-box input[type="submit"]{
+  font-size: 1rem;
+}
+.login-box {
+ 
+  height: 600px;
+  width: 650px;
+  
+  /* padding: 3rem; */
+}
+
+}
