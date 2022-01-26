@@ -58,12 +58,12 @@ $rescheck = mysqli_num_rows($magsiniers);
                         while ($row = mysqli_fetch_assoc($magsiniers)) : ?>
                             <tr>
                                 <td>#<?= $row["id"]; ?></td>
-                                <td><?= $row["nom"]; ?></td>''
+                                <td><?= $row["nom"]; ?></td>
                                 <td><?= $row["CIN"]; ?></td>
                                 <td><?= $row["PASSWORD"]; ?></td>
                                 <td class="edit">
                                     <a href="./modifiermag.php?id=<?= $row["id"]; ?>">
-                                    <i class="fas fa-lg fa-user-edit"></i>
+                                        <i class="fas fa-lg fa-user-edit"></i>
                                     </a>
                                     <a href="./supprimerMag.php?id=<?= $row["id"]; ?>">
                                         <i class="fas fa-lg fa-trash"></i>
