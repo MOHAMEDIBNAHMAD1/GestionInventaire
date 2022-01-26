@@ -48,6 +48,7 @@ $prs = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
     <link rel="stylesheet" href="./styles/style.css" />
     <script src="./js/main.js" defer></script>
     <script src="./js/voir.js" defer></script>
+    <script src="./js/resAside.js" defer></script>
     <title>Home</title>
 </head>
 

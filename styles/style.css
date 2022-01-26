@@ -72,6 +72,10 @@ aside .menu a {
   transition: transform 250ms ease;
   /* width: max-content; */
   padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 aside .menu a:hover {
   transform: scale(1.05);
@@ -79,6 +83,12 @@ aside .menu a:hover {
 }
 aside i {
   margin-right: 10px;
+}
+.fa-bars {
+  display: none;
+  z-index: -1;
+  position: absolute;
+  color: var(--white);
 }
 /* ? aside end*/
 /* ? modal start*/
@@ -150,7 +160,8 @@ aside i {
   background-color: var(--white);
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 10px;
 }
 .voir-content img {
   width: 40%;
@@ -329,3 +340,44 @@ footer {
   padding: var(--padding);
 }
 
+@media screen and (max-width: 1340px) {
+  header img {
+    width: 200px;
+  }
+  aside {
+    width: 10vw;
+  }
+  aside .infos img {
+    width: 80%;
+  }
+  aside .menu p {
+    display: none;
+  }
+  aside .menu i {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 1000px) {
+  main {
+    margin-left: 5vw;
+  }
+  aside {
+    position: absolute;
+    width: 70px;
+  }
+  .aside-mobile {
+    width: 5vw;
+  }
+  .mobile {
+    opacity: 0;
+  }
+  .fa-bars {
+    opacity: 1;
+    position: absolute;
+    margin: auto;
+    top: 40px;
+    display: block;
+    z-index: 9999;
+    color: var(--white);
+  }
+}
