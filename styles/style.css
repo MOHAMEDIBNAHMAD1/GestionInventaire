@@ -202,6 +202,10 @@ main header {
 main .fa-search {
   color: var(--main-color);
 }
+main header button {
+  background-color: transparent;
+  border: none;
+}
 main input[type="text"] {
   outline: none;
   border: none;

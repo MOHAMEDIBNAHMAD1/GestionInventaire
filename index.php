@@ -34,8 +34,12 @@ if (isset($_POST['achat'])) {
 }
 
 
-
-$products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, produit.description, img FROM produit, categorie WHERE categorie.id = produit.idCat;");
+if (isset($_GET["rechercher"])) {
+    $rech = $_GET["rechercher"];
+    $products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, produit.description, img FROM produit, categorie WHERE categorie.id = produit.idCat AND produit.intitule like '%$rech%';");
+} else {
+    $products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, produit.description, img FROM produit, categorie WHERE categorie.id = produit.idCat;");
+}
 $rescheck = mysqli_num_rows($products);
 $prs = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
 
@@ -86,8 +90,10 @@ $prs = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
         <main>
             <header>
                 <div>
-                    <input type="text" name="rechercher id=" recherche" placeholder="Rechercher..." />
-                    <i class="fas fa-search"></i>
+                    <form action="./index.php" method="GET">
+                        <input type="text" name="rechercher" id=" recherche" placeholder="Rechercher..." />
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
                 </div>
                 <img src="./imgs/Logo.png" alt="img" />
             </header>
