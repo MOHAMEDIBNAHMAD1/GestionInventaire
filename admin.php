@@ -51,7 +51,7 @@ $rescheck = mysqli_num_rows($magsiniers);
                         <td>password</td>
                         <!-- <td>Quantite</td> -->
                         <td>Edit</td>
-                        <td></td>
+                        
                     </tr>
                     <?php
                     if ($rescheck > 0) :

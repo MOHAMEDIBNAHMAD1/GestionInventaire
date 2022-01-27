@@ -153,14 +153,14 @@ main .products-list tr {
   margin-bottom: 10px;
 }
 main .products-list td {
-  text-align: center;
+  text-align: center;  
   padding: var(--padding) 5px;
   color: var(--main-color);
   font-weight: 600;
 }
-main .products-list tr td:last-child {
+/* main .products-list tr td:last-child {
   padding: 0;
-}
+} */
 main .voir {
   border: none;
   background-color: var(--main-color);
@@ -185,7 +185,7 @@ main .voir {
 }
 .products-list .edit a {
   text-decoration: none;
-  color: var(--main-color);
+  color: var(--main-color); 
 }
 /*? products end*/
 
