@@ -222,7 +222,6 @@ main .stats {
   justify-content: space-between;
   padding-inline: var(--padding);
   gap: 30px;
-  overflow-x: scroll;
 }
 main .stats div {
   background-color: var(--accent-color);
@@ -386,6 +385,9 @@ footer {
     display: block;
     z-index: 9999;
     color: var(--white);
+  }
+  main .stats {
+    overflow-x: scroll;
   }
   main .stats div {
     min-width: 300px;
