@@ -5,6 +5,9 @@
   --white: #fff;
   --padding: 20px;
 }
+/* body {
+  overflow-x: hidden;
+} */
 
 * {
   margin: 0;
@@ -17,6 +20,7 @@
   min-height: 100vh;
   display: flex;
   position: relative;
+  max-width: 100vw;
   /* background-color: khaki; */
 }
 
@@ -89,6 +93,7 @@ aside i {
   z-index: -1;
   position: absolute;
   color: var(--white);
+  cursor: pointer;
 }
 /* ? aside end*/
 /* ? modal start*/
@@ -183,6 +188,7 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  width: 100%;
   /* height: 200vh; */
 }
 
@@ -216,6 +222,7 @@ main .stats {
   justify-content: space-between;
   padding-inline: var(--padding);
   gap: 30px;
+  overflow-x: scroll;
 }
 main .stats div {
   background-color: var(--accent-color);
@@ -379,5 +386,33 @@ footer {
     display: block;
     z-index: 9999;
     color: var(--white);
+  }
+  main .stats div {
+    min-width: 300px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .container {
+    width: 100vw;
+  }
+  main .products {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  main .products-list {
+    width: 900px;
+  }
+  .achat {
+    width: 80%;
+  }
+  .achat .bbtns {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 500px) {
+  header img {
+    width: 100px;
   }
 }
