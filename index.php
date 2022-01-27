@@ -8,12 +8,16 @@ include './credentials.php';
 $cin = $_SESSION["cin"];
 $res = mysqli_query($conn, "SELECT id, nom FROM magasinier WHERE cin like '$cin';");
 $emp = mysqli_fetch_assoc($res);
-$idmag=$emp['id'];
+$idmag = $emp['id'];
+
+$maxSell = mysqli_query($conn, "SELECT produit.intitule, SUM(achat.qtt) as qtt FROM achat, produit WHERE produit.id = achat.idPr GROUP BY produit.intitule ORDER by qtt desc LIMIT 1;");
+$minStock = mysqli_query($conn, "SELECT intitule, qtt FROM produit ORDER by qtt asc LIMIT 1;");
+
 if (isset($_POST['achat'])) {
 
     $id = $_POST['prod'];
     $qtt = $_POST['quant'];
-    
+
 
     $query = "SELECT intitule ,qtt FROM produit WHERE id = $id;";
 
@@ -23,15 +27,19 @@ if (isset($_POST['achat'])) {
     if ($qtt > $produit['qtt']) {
         echo "<script>alert('Quantie disponible " . $produit['qtt'] . "')</script>";
     } else {
-       
+
         mysqli_query($conn, "UPDATE produit SET qtt = qtt - $qtt WHERE id = $id");
-        mysqli_query($conn,"INSERT INTO `achat`(`idPr`, `idmag`, `qtt`) VALUES ($id, $idmag,$qtt)");
+        mysqli_query($conn, "INSERT INTO `achat`(`idPr`, `idmag`, `qtt`) VALUES ($id, $idmag,$qtt)");
     }
 }
 
 
-
-$products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, produit.description, img FROM produit, categorie WHERE categorie.id = produit.idCat;");
+if (isset($_GET["rechercher"])) {
+    $rech = $_GET["rechercher"];
+    $products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, produit.description, img FROM produit, categorie WHERE categorie.id = produit.idCat AND produit.intitule like '%$rech%';");
+} else {
+    $products = mysqli_query($conn, "SELECT produit.id, categorie.intitule as intCa, produit.intitule, prix, qtt, produit.description, img FROM produit, categorie WHERE categorie.id = produit.idCat;");
+}
 $rescheck = mysqli_num_rows($products);
 $prs = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
 
@@ -82,17 +90,38 @@ $prs = mysqli_query($conn, "SELECT id, intitule ,qtt FROM produit;");
         <main>
             <header>
                 <div>
-                    <input type="text" name="rechercher id=" recherche" placeholder="Rechercher..." />
-                    <i class="fas fa-search"></i>
+                    <form action="./index.php" method="GET">
+                        <input type="text" name="rechercher" id=" recherche" placeholder="Rechercher..." />
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
                 </div>
                 <img src="./imgs/Logo.png" alt="img" />
             </header>
             <section class="stats">
                 <div><i class="fas fa-5x fa-layer-group"></i>
-                    <p>item on stock</p>
+                    <p>
+                    </p>
                 </div>
-                <div><i class="fas fa-5x fa-sort-amount-down"></i></div>
-                <div><i class="fas fa-5x fa-sort-amount-up"></i></div>
+                <div><i class="fas fa-5x fa-sort-amount-down"></i>
+                    <p>
+                        <?php if (mysqli_num_rows($minStock) > 0) :
+                            $min = mysqli_fetch_assoc($minStock) ?>
+                            <?= $min['intitule']; ?>
+                            <br>
+                            <?= $min['qtt']; ?>
+                        <?php endif; ?>
+                    </p>
+                </div>
+                <div><i class="fas fa-5x fa-sort-amount-up"></i>
+                    <p>
+                        <?php if (mysqli_num_rows($maxSell) > 0) :
+                            $max = mysqli_fetch_assoc($maxSell) ?>
+                            <?= $max['intitule']; ?>
+                            <br>
+                            <?= $max['qtt']; ?>
+                        <?php endif; ?>
+                    </p>
+                </div>
             </section>
             <section class="products">
                 <table class="products-list" cellspacing="0">
