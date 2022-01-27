@@ -18,10 +18,11 @@ $rescheck = mysqli_num_rows($magsiniers);
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <?php include "./meta.php"; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./styles/styleadmin.css" />
-    <title>Home</title>
+    <title>Home -admin-</title>
 </head>
 
 <body>
@@ -51,7 +52,7 @@ $rescheck = mysqli_num_rows($magsiniers);
                         <td>password</td>
                         <!-- <td>Quantite</td> -->
                         <td>Edit</td>
-                        
+
                     </tr>
                     <?php
                     if ($rescheck > 0) :

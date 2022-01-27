@@ -21,11 +21,12 @@ $rescheck = mysqli_num_rows($magsiniers);
 
 <head>
     <meta charset="UTF-8" />
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <?php include "./meta.php"; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./styles/styleadmin.css" />
-    <title>Home</title>
+    <title>Ajouter categorie</title>
 </head>
 
 <body>
@@ -34,7 +35,7 @@ $rescheck = mysqli_num_rows($magsiniers);
         <main>
             <h1 style="text-align: center;">Ajouter catégorie</h1>
             <form class="form" action="./operationAdmin.php" method="POST">
-                        <!-- <?php if ($check > 0) :
+                <!-- <?php if ($check > 0) :
                             while ($row = mysqli_fetch_assoc($results)) : ?>
                                 <option value="<?= $row["id"]; ?>"><?= $row["intitule"]; ?></option>
                         <?php endwhile;
@@ -65,7 +66,7 @@ $rescheck = mysqli_num_rows($magsiniers);
                                 <td><?= $row["id"]; ?></td>
                                 <td><?= $row["intitule"]; ?></td>
                                 <td><?= $row["Description"]; ?></td>
-                               
+
                                 <!-- <td><?= $row["qtt"]; ?></td> -->
                                 <td class="edit">
                                     <a href="./modifiercatégorie.php?id=<?= $row["id"]; ?>">
