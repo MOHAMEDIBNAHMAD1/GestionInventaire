@@ -8,6 +8,7 @@ $cin = $_SESSION["cin"];
 $res = mysqli_query($conn, "SELECT nom FROM magasinier WHERE cin like '$cin';");
 $emp = mysqli_fetch_assoc($res);
 
+
 $results = mysqli_query($conn, "SELECT * FROM categorie;");
 $check = mysqli_num_rows($res);
 ?>

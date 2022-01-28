@@ -251,3 +251,60 @@ font-weight: 500;
   display: flex;
   justify-content: flex-end;
 }
+
+@media screen and (max-width: 1000px) {
+  main {
+    margin-left: 5vw;
+  }
+  aside {
+    position: absolute;
+    width: 70px;
+  }
+  .aside-mobile {
+    width: 5vw;
+  }
+  .mobile {
+    opacity: 0;
+  }
+  .fa-bars {
+    opacity: 1;
+    position: absolute;
+    margin: auto;
+    top: 40px;
+    display: block;
+    z-index: 9999;
+    color: var(--white);
+  }
+  main .stats {
+    overflow-x: scroll;
+  }
+  main .stats div {
+    min-width: 300px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .container {
+    width: 100vw;
+  }
+  main .products {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  main .products-list {
+    width: 900px;
+  }
+  .achat {
+    width: 80%;
+  }
+  .achat .bbtns {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 500px) {
+  header img {
+    width: 100px;
+  }
+}
+
