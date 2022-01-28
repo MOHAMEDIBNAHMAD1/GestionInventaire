@@ -26,11 +26,12 @@ $product = mysqli_fetch_assoc($pr);
 
 <head>
     <meta charset="UTF-8" />
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <?php include "./meta.php"; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./styles/styleadmin.css" />
-    <title>Home</title>
+    <title>Modifier categorie</title>
 </head>
 
 <body>
@@ -39,10 +40,10 @@ $product = mysqli_fetch_assoc($pr);
         <main>
             <h1 style="text-align: center;">Mofifier catégorie</h1>
             <form class="form" action="operationAdmin.php" method="POST">
-                
-                
 
-                <div class="data-input"> <label>intitulé</label><input type="text" name="intitulé" id="" value="<?= $product["intitule"]?>"></div>
+
+
+                <div class="data-input"> <label>intitulé</label><input type="text" name="intitulé" id="" value="<?= $product["intitule"] ?>"></div>
                 <!-- <div class="data-input"> <label></label><input type="text" name="CINm" id=""></div>
                 <div class="data-input"> <label>Password</label><input type="text" name="pwd" id=""></div> -->
                 <!-- <div class="data-input"> <label>Image</label><input type="file" name="img" id="" accept=".png,.jpg,.jpeg"></div> -->
@@ -52,7 +53,7 @@ $product = mysqli_fetch_assoc($pr);
                 <div class="data-input btns"> <input type="text" name="id" id="" value="<?= $id ?>" hidden></div>
                 <!-- <div class="data-input"><a href="./index.php">Annuler</a><input type="submit" value="Modifier"></div> -->
             </form>
-            
+
             <footer>Copyright 2022 all rights reserved</footer>
         </main>
     </div>

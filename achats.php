@@ -8,7 +8,7 @@ $cin = $_SESSION["admin"];
 $res = mysqli_query($conn, "SELECT nom FROM admin WHERE cin like '$cin';");
 $emp = mysqli_fetch_assoc($res);
 
-$achats= mysqli_query($conn, "SELECT `produit`.`intitule`, `magasinier`.`nom`, achat.`qtt`, `dateAchat` FROM `achat`, `produit`, `magasinier` WHERE `produit`.`id` = idPr AND magasinier.id = `idmag`");
+$achats = mysqli_query($conn, "SELECT `produit`.`intitule`, `magasinier`.`nom`, achat.`qtt`, `dateAchat` FROM `achat`, `produit`, `magasinier` WHERE `produit`.`id` = idPr AND magasinier.id = `idmag`");
 $rescheck = mysqli_num_rows($achats);
 
 // $magasin=mysqli_query($conn,"SELECT `id`, `nom` FROM `magasinier`");
@@ -24,11 +24,12 @@ $rescheck = mysqli_num_rows($achats);
 
 <head>
     <meta charset="UTF-8" />
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <?php include "./meta.php"; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./styles/styleadmin.css" />
-    <title>Home</title>
+    <title>Achat</title>
 </head>
 
 <body>
@@ -36,7 +37,7 @@ $rescheck = mysqli_num_rows($achats);
         <?php include './asideadmin.php'; ?>
         <main>
             <h1 style="text-align: center;">Les Achats</h1>
-            
+
             <section class="products">
                 <table class="products-list" cellspacing="0">
                     <tr>

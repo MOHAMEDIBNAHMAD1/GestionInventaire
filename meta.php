@@ -1,0 +1,1 @@
+<meta name="description" content="shopNow, shop, electronics, pc, laptop, smartphone, accessoire">
